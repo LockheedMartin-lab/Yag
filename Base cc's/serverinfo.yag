@@ -1,0 +1,121 @@
+{{/*
+	This command allows you to view information about the server.
+	Usage: `-serverinfo`. (Use `-server icon` to view the server icon).
+
+	Recommended trigger: Regex trigger with trigger `\A(-|<@!?204255221017214977>\s*)(server|guild)(-?info)?(\s+|\z)`
+*/}}
+
+{{$botnum := 5}}
+{{$levelroles_ger := 789097873051877388}}
+{{$levelroles_en := 784844537386369036}}
+{{$gameroles := 784876427710693417}}
+{{$modrole := "<@796752933530107975>"}}
+{{$rulesen := 845268685500710922}}
+{{$rulesde := 784844537386369036}}
+{{$en := 810502607260090410}}
+{{$de := 863495491752034325}}
+{{$languageselect := 845333396905525279}}
+
+{{ $icon := "" }}
+{{ $name := printf "%s (%d)" .Guild.Name .Guild.ID }}
+{{ if .Guild.Icon }}
+	{{ $ext := "webp" }}
+	{{ if eq (slice .Guild.Icon 0 2) "a_" }} {{ $ext = "gif" }} {{ end }}
+	{{ $icon = printf "https://cdn.discordapp.com/icons/%d/%s.%s" .Guild.ID .Guild.Icon $ext }}
+{{ end }}
+
+{{ $owner := userArg .Guild.OwnerID }}
+{{ $levels := cslice
+	"None: Unrestricted"
+	"Low: Must have a verified email on their Discord account."
+	"Medium: Must also be registered on Discord for longer than 5 minutes."
+	"(╯°□°）╯︵ ┻━┻: Must also be a member of this server for longer than 10 minutes."
+	"┻━┻ ﾐヽ(ಠ益ಠ)ノ彡┻━┻: Must have a verified phone on their Discord account."
+}}
+{{ $afk := "n/a" }}
+{{ if .Guild.AfkChannelID }}
+	{{ $afk = printf "**Channel:** <#%d>\n**Timeout:** %s"
+		.Guild.AfkChannelID
+		.Guild.AfkChannelID
+		(humanizeDurationSeconds (toDuration (mult .Guild.AfkTimeout .TimeSecond)))
+	}}
+{{ end }}
+
+
+
+{{/*Tests which language is needed */}}
+
+{{$english := ""}}
+{{$german := ""}}
+{{$language := ""}}
+{{$levelroles := ""}}
+
+{{if hasRoleID $en}}
+{{$language := $english}}
+{{else}}
+	{{if hasRoleID $de}}
+	{{$language := $levelroles_ger}}
+	{{else}}
+		{{sendDM "Please select your prefered language in <#" $languageselect ">. "}}
+		{{$language := $levelroles_en}}
+	{{end}}
+{{end}}
+
+
+{{ $createdAt := div .Guild.ID 4194304 | add 1420070400000 | mult 1000000 | toDuration | (newDate 1970 1 1 0 0 0).Add }}
+
+{{ $infoEmbed := cembed
+	"author" (sdict "name" $name "icon_url" $icon)
+	"color" 14232643
+	"thumbnail" (sdict "url" $icon)
+	"fields" (cslice
+		
+		
+		(sdict "name" "❯ Members" "value" (printf "**• Total:** " (sub (.Guild.MemberCount) $botnum) " Members\n**• Online:** " (sub (onlineCount) $botnum) " Members"))
+		(sdict "name" "❯ Rules " "value" (printf "You can see the rules in the <#" $rulesen "> channel. "))
+        (sdict "name" "❯ Roles" "value" (printf "*• Total:**\nUse `;Roles` in <#" $levelroles "> to see the avalilable Roles\nYou can receive other roles (like nsfw, memes, etc.) in the corrosponding verify channels\nand select the games that you're playing in the " $gameroles "channel. "))
+        (sdict "name" "❯ Owner" "value" (printf "%s (%d)"))
+        (sdict "name" "❯ Moderation" "value" (printf "Everyone who has the role `" $modrole "` is a moderator. "))
+        (sdict "name" "❯ AFK" "value" $afk)
+		(sdict "name" "❯ Verification Level" "value" (index $levels .Guild.VerificationLevel))
+
+
+
+		
+        
+		
+
+	)
+	"footer" (sdict "text" "Created at")
+	"timestamp" $createdAt
+}}
+
+
+{{/* sdict "name" "❯ Owner" "value" (printf "%s (%d)" $owner.String))
+        (sdict "name" "❯ Embeds Enabled" "value" $embedsEnabled)
+        (sdict "name" "❯ Region" "value" .Guild.Region) */}}
+
+
+{{ if .CmdArgs }}
+	{{ if eq (index .CmdArgs 0) "icon" }}
+		{{ sendMessage nil (cembed
+			"author" (sdict "name" $name "icon_url" $icon)
+			"title" "❯ Server Icon"
+			"color" 14232643
+			"image" (sdict "url" $icon)
+		) }}
+	{{ else }}
+		{{ sendMessage nil $infoEmbed }}
+	{{ end }}
+{{ else }}
+	{{ sendMessage nil $infoEmbed }}
+{{ end }}
+
+{{if hasRoleID $en}}
+xyz
+{{else}}
+	{{if hasRoleID $de}}
+	xyz
+	{{else}}
+	{{end}}
+{{end}}
