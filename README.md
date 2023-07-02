@@ -1,7 +1,6 @@
 <div align="center"><h1><img src="https://yagpdb.xyz/static/img/logo_y.png" alt="" height=32px width=32px></img>&nbspYAGPDB Custom Commands</h1></div>
 
-## Own & 3rd party CC's that might be usefull
-CC's:
+### Own & 3rd party CC's that might be usefull:
 - [AFK](https://github.com/LockheedMartin-lab/Yag/tree/main/AFK)
   - Gives you a role and sends an automated message when an other user mentions you, with the duration/reason (if specified), the afk status is automatically removed once you type something  (possibly in an future update: if you join a channel)
 - [Count together](https://github.com/LockheedMartin-lab/Yag/tree/main/Counter)
