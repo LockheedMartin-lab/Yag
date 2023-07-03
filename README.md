@@ -1,16 +1,16 @@
 <div align="center"><h1><img src="https://yagpdb.xyz/static/img/logo_y.png" alt="" height=32px width=32px></img>&nbspYAGPDB Custom Commands</h1></div>
 
 ### Own & 3rd party CC's that might be usefull:
-- [AFK](https://github.com/LockheedMartin-lab/Yag/tree/main/AFK)
-  - Gives you a role and sends an automated message when an other user mentions you, with the duration/reason (if specified), the afk status is automatically removed once you type something  (possibly in an future update: if you join a channel)
-- [Count together](https://github.com/LockheedMartin-lab/Yag/tree/main/Counter)
-  - Edited CC cause the owner didn't finish it at the time I needed it (gives you a list of the people who wrote the most in a count together channel)
-- [Headers](https://github.com/LockheedMartin-lab/Yag/tree/main/Headers)
-  - If you have a server structure on your server like moderation (roles of moderators underneath), users (roles of users underneath), games (roles of games underneath), etc this CC automatically checks after you react to a message if you have all of your necessary dividers or if you possibly have some that you don't need, it adds/removes those if needed  
-- [Private Channel](https://github.com/LockheedMartin-lab/Yag/tree/main/Private%20Channel)
-  - Private channel & corresponding role is created, afterwards you need to asign those. Once the CC is set up everyone who has the private channel role can add someone to the channel by using the command
-- [Suggestion System](https://github.com/LockheedMartin-lab/Yag/tree/main/Suggestion%20system)
-  - I tried to replace the suggestion system on my server with this CC, I didn't get around to it yet, so I don't know if it works
+- [AFK](https://github.com/LockheedMartin-lab/Yag/tree/main/AFK)  
+Gives you a role and sends an automated message when an other user mentions you, with the duration/reason (if specified), the afk status is automatically removed once you type something  (possibly in an future update: if you join a channel)
+- [Count together](https://github.com/LockheedMartin-lab/Yag/tree/main/Counter)  
+Edited CC cause the owner didn't finish it at the time I needed it (gives you a list of the people who wrote the most in a count together channel)
+- [Headers](https://github.com/LockheedMartin-lab/Yag/tree/main/Headers)  
+If you have a server structure on your server like moderation (roles of moderators underneath), users (roles of users underneath), games (roles of games underneath), etc this CC automatically checks after you react to a message if you have all of your necessary dividers or if you possibly have some that you don't need, it adds/removes those if needed  
+- [Private Channel](https://github.com/LockheedMartin-lab/Yag/tree/main/Private%20Channel)  
+Private channel & corresponding role is created, afterwards you need to asign those. Once the CC is set up everyone who has the private channel role can add someone to the channel by using the command
+- [Suggestion System](https://github.com/LockheedMartin-lab/Yag/tree/main/Suggestion%20system)  
+I tried to replace the suggestion system on my server with this CC, I didn't get around to it yet, so I don't know if it works
 
 ## Links to other helpful repositories
 - [The official custom command repository](https://yagpdb-cc.github.io)
