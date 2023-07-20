@@ -1,3 +1,5 @@
+![Badge](https://raw.githubusercontent.com/LockheedMartin-lab/Yag/e55f46ee5312cbe9cb0a0ce8e7ab805b9bd10e58/other/made-with-go.svg)
+
 <div align="center"><h1><img src="https://yagpdb.xyz/static/img/logo_y.png" alt="" height=32px width=32px></img>&nbspYAGPDB Custom Commands</h1></div>
 
 ### Own & 3rd party CC's that might be usefull:
